@@ -1,5 +1,5 @@
 # Knowself
-## What can you know about personality from writing samples.
+## What can be learned about personality from writing samples.
 As determined from the Twitter stream, Facebook posts and stream-of-consciousness
 essays.
 
