@@ -1,11 +1,13 @@
 import os
 from flask import Flask
+from __init__ import create_app
 
-app = Flask(__name__)
+app = create_app()
 
-@app.route('/')
-def hello():
-    return 'Hello World!'
+
+# @app.route('/')
+# def hello():
+#     return 'Hello World!'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

@@ -157,3 +157,5 @@ def get_twitter_api():
                  consumer_secret=keys[1],
                  access_token_key=keys[2],
                  access_token_secret=keys[3])
+    return api
+
