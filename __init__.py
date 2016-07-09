@@ -16,8 +16,8 @@ from flask import Flask
 from flask_appconfig import AppConfig
 from flask_bootstrap import Bootstrap
 
-from .frontend import frontend
-from .nav import nav
+from frontend import frontend
+from nav import nav
 
 
 def create_app(configfile=None):

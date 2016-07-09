@@ -10,8 +10,8 @@ from flask_bootstrap import __version__ as FLASK_BOOTSTRAP_VERSION
 from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator
 from markupsafe import escape
 
-from .forms import SignupForm
-from .nav import nav
+from forms import SignupForm
+from nav import nav
 
 frontend = Blueprint('frontend', __name__)
 
@@ -22,7 +22,6 @@ nav.register_element('frontend_top', Navbar(
     View('Flask-Bootstrap', '.index'),
     View('Home', '.index'),
     View('Forms Example', '.example_form'),
-    View('Debug-Info', 'debug.debug_root'),
     Subgroup(
         'Docs',
         Link('Flask-Bootstrap', 'http://pythonhosted.org/Flask-Bootstrap'),
