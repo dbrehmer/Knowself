@@ -7,6 +7,7 @@ Three sets of data were found of writing with personality labels.
   1. Twitter posts from 152 unique people, 14166 in total.
   2. Facebook posts from 250 unique people, 9917 in total.
   3. Stream of consciousness essays from 2468 unique people.
+
 All three of these are labeled with "Big 5" personality types. The Big 5 model for personality evolved from the lexical hypothesis that the range of human perspectives on the world must be encoded in the language that we use. The Big 5, or Five Factor model claims that the personality characteristics represented by the terms in our language cluster into five groups corresponding to scales on which personality can be measured.
 
 ## The Application:

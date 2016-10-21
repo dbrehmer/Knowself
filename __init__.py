@@ -26,7 +26,8 @@ def create_app(configfile=None):
     # http://flask.pocoo.org/docs/patterns/appfactories/
 
     app = Flask(__name__)
-
+    app.secret_key = "realsecretkey"
+    
     # We use Flask-Appconfig here, but this is not a requirement
     AppConfig(app)
 
