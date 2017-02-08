@@ -1,10 +1,37 @@
+"""Functions for producing model results.
+
+Contains functions for producing the plots and other results of the model.
+"""
+
+import pandas as pd
+import numpy as np
+import os
+import xml.etree.ElementTree as ET
+from unidecode import unidecode
+import matplotlib.pyplot as plt
+from re import finditer
+from pprint import pprint
+from time import time
+import pickle
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
+from sklearn.cross_validation import train_test_split
+from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor, RandomForestClassifier, RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.pipeline import Pipeline
+from sklearn.grid_search import GridSearchCV
+from sklearn.decomposition import TruncatedSVD
+from sklearn.metrics import roc_curve
+
 def pers_pred_seq(tweet_list, step,  pipe, vect, tfidf, lsa, rfr):
-    '''
-    INPUT: list of strings, int, list of pipelines, list of vectorizors, list of tfidf tranformers
-            list of lsa transformers, list of random forest regressors, 7 in each list.
-    OUTPUT: list of values suitable for plotting plus results from all decision tree estimators in
-            the forest with their standard deviation for increasing numbers of tweets.
-    '''
+    """Run model and return results.
+
+    INPUT: list of strings, int, list of pipelines, list of vectorizors, list
+            of tfidf tranformers list of lsa transformers, list of random
+            forest regressors, 7 in each list.
+    OUTPUT: list of values suitable for plotting plus results from all decision
+            tree estimators in the forest with their standard deviation for
+            increasing numbers of tweets.
+    """
     l_results = []
     l_pred_std = []
     l_tpreds = []

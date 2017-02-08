@@ -15,6 +15,7 @@ from httplib import BadStatusLine
 import json
 import twitter
 
+
 def make_twitter_request(twitter_api_func, max_errors=10, *args, **kw):
 
     # A nested helper function that handles common HTTPErrors. Return an updated
@@ -84,6 +85,7 @@ def make_twitter_request(twitter_api_func, max_errors=10, *args, **kw):
                 print >> sys.stderr, "Too many consecutive errors...bailing out."
                 raise
 
+
 def harvest_user_timeline(twitter_api, screen_name=None, user_id=None, max_results=1000):
 
     assert (screen_name != None) != (user_id != None), \
@@ -148,6 +150,7 @@ def harvest_user_timeline(twitter_api, screen_name=None, user_id=None, max_resul
 
     return results[:max_results]
 
+
 def get_twitter_api():
     keys = []
     with open('../twitter.txt') as f:
@@ -158,4 +161,3 @@ def get_twitter_api():
                  access_token_key=keys[2],
                  access_token_secret=keys[3])
     return api
-
