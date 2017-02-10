@@ -1,44 +1,74 @@
-{# ``base.html`` is the template all our other templates derive from. While
-   Flask-Bootstrap ships with its own base, it is good form to create a custom
-   one for our app, as it allows customizing some aspects.
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
 
-   Deriving from bootstap/base.html gives us a basic page scaffoling.
+  <title>{% block title %}yoursite.com{% endblock %}</title>
 
-   You can find additional information about template inheritance at
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/static/favicon.ico">
 
-   http://jinja.pocoo.org/docs/templates/#template-inheritance
-#}
-{%- extends "bootstrap/base.html" %}
+  <!-- HTML5 shim, for IE 6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-{# We also set a default title, usually because we might forget to set one.
-   In our sample app, we will most likely just opt not to change it #}
-{% block title %}Sample App for Flask-Bootstrap{% endblock %}
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+  <link rel="stylesheet/less" href="/static/css/main.less">
+  {% block css %}{% endblock %}
 
-{# While we are at it, we also enable fixes for legacy browsers. First we
-   import the necessary macros: #}
-{% import "bootstrap/fixes.html" as fixes %}
+  <!-- Rather use `less.js` to dynamically compile your `stylesheet/less` files? -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js"></script>
+  <script>window.less || document.write('<script src="/static/js/less.js">\x3C/script>')</script>
 
-{# Then, inside the head block, we apply these. To not replace the header,
-   ``super()`` is used: #}
-{% block head %}
-{{super()}}
+  <!-- Need Modernizr? Uncomment the following script. -->
+  <!-- <script src="/static/js/modernizr.js"></script> -->
 
-{#- Docs: http://pythonhosted.org/Flask-Bootstrap/macros.html#fixes
-   The sample application already contains the required static files. #}
-{{fixes.ie8()}}
-{%- endblock %}
+</head>
 
-{# Adding our own CSS files is also done here. Check the documentation at
-   http://pythonhosted.org/Flask-Bootstrap/basic-usage.html#available-blocks
-   for an overview. #}
-{% block styles -%}
-    {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
-                    will disappear! #}
-    <link rel="stylesheet" type="text/css"
-          href="{{url_for('static', filename='sample-app.css')}}">
-{% endblock %}
+<body>
 
-{# Finally, round things out with navigation #}
-{% block navbar %}
-{{nav.frontend_top.render()}}
-{% endblock %}
+  <header>
+    {% include "header.html" %}
+  </header>
+
+  <div id="main" role="main">
+    {% block main %}{% endblock %}
+  </div>
+
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/static/js/libs/jquery.js">\x3C/script>')</script>
+
+
+  <!-- Additional JavaScript libraries and plugins... -->
+  {% block js %}{% endblock %}
+
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+  <!-- Prompt IE < 8 users to install Chrome Frame.  -->
+  <!--[if lt IE 8 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+</body>
+</html>
