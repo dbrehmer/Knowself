@@ -1,4 +1,5 @@
-"""
+"""A basic Flask app.
+
 Flask Documentation:     http://flask.pocoo.org/docs/
 Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
@@ -11,7 +12,10 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
+# If a SECRET_KEY env var is not defined it will use the phrase 'Please define
+# SECRET_KEY env var.' as the secret key.
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY',
+                                          'Please define SECRET_KEY env var.')
 
 
 ###
@@ -28,6 +32,18 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html')
+
+
+@app.route('/about2')
+def about2():
+    """Render the website's about page."""
+    return render_template('about2.html')
+
+
+@app.route('/twitter/<handle>')
+def show_twitter_plots(handle):
+    # Show some tweets and predict on user twitter stream
+    return 'User %s' % handle
 
 
 ###

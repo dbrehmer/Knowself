@@ -6,4 +6,10 @@
 
 
 {% block main %}
+<h1>Predict age, gender and personality from a twitter stream</h1>
+<p>Enter a Twitter handle</p>
+<form action="." method="POST">
+    <input type="text" name="text">
+    <input type="submit" name="get_twitter_handle" value="Predict">
+</form>
 {% endblock %}
