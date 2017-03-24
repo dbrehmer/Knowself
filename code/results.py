@@ -14,11 +14,10 @@ from pprint import pprint
 from time import time
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
-from sklearn.cross_validation import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor, RandomForestClassifier, RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.pipeline import Pipeline
-from sklearn.grid_search import GridSearchCV
+from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics import roc_curve
 

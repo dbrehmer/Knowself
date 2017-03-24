@@ -81,7 +81,7 @@ hr {
     margin-bottom: 20px;
     padding: 30px 15px;
     background: #fff;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.7);
 }
 
 .intro-text {
@@ -104,7 +104,7 @@ hr {
 
 footer {
     background: #fff;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.7);
 }
 
 footer p {
@@ -123,7 +123,7 @@ footer p {
         font-size: 5em;
         font-weight: 700;
         line-height: normal;
-        color: #fff;
+        color: #0f52fc;
     }
 
     .top-divider {
@@ -145,7 +145,7 @@ footer p {
         font-size: 1.25em;
         font-weight: 400;
         letter-spacing: 3px;
-        color: #fff;
+        color: #0f52fc;
     }
 
     .navbar {
@@ -163,7 +163,7 @@ footer p {
     .navbar-default {
         border: none;
         background: #fff;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.7);
     }
 
     .nav>li>a {
