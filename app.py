@@ -34,14 +34,21 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/about2')
+@app.route('/about2.html')
 def about2():
     """Render the website's about page."""
     return render_template('about2.html')
 
 
+@app.route('/personality')
+def personality():
+    """Render the personality test page."""
+    return render_template('personality.html')
+
+
 @app.route('/twitter/<handle>')
 def show_twitter_plots(handle):
+    """Run model and show plots for a given Twitter handle."""
     # Show some tweets and predict on user twitter stream
     return 'User %s' % handle
 

@@ -4,7 +4,7 @@ Functions in this module will load training data and build the model.
 """
 
 import os
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as et
 from re import finditer
 from unidecode import unidecode
 import pandas as pd
@@ -25,11 +25,14 @@ def load_pan_xml_tweets(file_dir=DATA_DIR):
 
     OUTPUT: list
     """
+    # Get the list of files in the directory
     files_e = os.listdir(file_dir)
     users = []
     for fil_e in files_e:
+        # for each file in the directory that is an xml file add its name and
+        # data to the users list.
         if fil_e[-3:] == 'xml':
-            tree = ET.parse(file_dir+'/'+fil_e)
+            tree = et.parse(file_dir+'/'+fil_e)
             root = tree.getroot()
             users.append([fil_e[:-3], []])
             for cdata in root.findall('document'):
@@ -155,7 +158,7 @@ def get_x_and_y(data_dir=DATA_DIR):
     compdf2 = compdf.apply(lambda x: 100.0*x/x['tweet_ct'], axis=1)
     compdf2['tw_text'] = df[['user', 'tw_text']].groupby('user').agg(' '.join)
     ydf = load_pan_y()
-    combineddf = compdf2.join(ydf, how='outer')
+    combineddf = ydf.join(compdf2, on='userid', how='outer')
     X = combineddf[list(compdf2.columns)]
     y = combineddf[list(ydf.columns)]
 
@@ -200,3 +203,14 @@ def LSA_pipe(Xtrain, ytrains, lsa_n):
                               vect__stop_words=None).fit(Xtrain, yt)
 
     return pl_lsa, vect, tfidf, lsa, rfr_lsa
+
+
+def main():
+    """Run this to build the model."""
+    X, y = get_x_and_y(DATA_DIR)
+
+    return X, y
+
+
+if __name__ == '__main__':
+    main()

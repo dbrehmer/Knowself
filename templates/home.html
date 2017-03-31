@@ -6,10 +6,29 @@
 
 
 {% block main %}
-<h1>Predict age, gender and personality from a twitter stream</h1>
-<p>Enter a Twitter handle</p>
-<form action="." method="POST">
-    <input type="text" name="text">
-    <input type="submit" name="get_twitter_handle" value="Predict">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">
+                    <strong>Predict age, gender and personality from a twitter stream</strong>
+                </h2>
+                <hr>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive img-border-left" src="/static/img/slide-2.jpg" alt="">
+            </div>
+            <div class="col-md-6">
+              <p>Enter a Twitter handle</p>
+              <form action="." method="POST">
+                  <input type="text" name="text">
+                  <input type="submit" name="get_twitter_handle" value="Predict">
+              </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
